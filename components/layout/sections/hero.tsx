@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import Magnetic from '@/components/layout/Animation/common//Magnetic';
 
 import Rounded from '@/components/layout/Animation/common/RoundedButton';
-
+import DynamicSlider from "../Animation/common/DynamicTextSlider";
 
 // import AnimatedButton from "../Animation/Button";
 
@@ -15,6 +15,23 @@ import AnimatedButton from "@/components/layout/Animation/common/button";
 export const Hero = () => (
   <div className="w-full py-20">
     <div className="container mx-auto">
+
+      <div>
+        <DynamicSlider
+          text="Freelance Developer -"
+          speed={0.1}
+          scrollScrub={0.5}
+          framerMotionVariants={{
+            initial: { y: 300 },
+            enter: {
+              y: 0,
+              transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: 2.0 },
+            },
+          }}
+          pauseOnHover={false}
+          className="my-custom-slider" // Optional additional class
+        />
+      </div>
       <div className="grid grid-cols-1 gap-8 items-center md:grid-cols-2">
         <div className="flex gap-4 flex-col">
           <div>
@@ -32,23 +49,24 @@ export const Hero = () => (
             </p>
           </div>
           <div className="flex flex-row flex-wrap gap-4">
+            <Magnetic>
             <Button size="lg" className="gap-4" variant="secondary">
               Jump on a call <PhoneCall className="w-4 h-4" />
             </Button>
+            </Magnetic>
             <Magnetic>
             <Button size="lg" className="gap-4">
               Sign up here <MoveRight className="w-4 h-4" />
             </Button>
             </Magnetic>
 
-            <Rounded>
-              <p className="circle">More work</p>
+            <Rounded backgroundColor={"red"} >
+              <p>Get in touch</p>
             </Rounded>
 
             
               <AnimatedButton
                 text="Click Me!"
-               
                 variant="primary"  // Should match a variant defined in your CSS (e.g., primary, outline)
                 size="lg"          // Should match a size defined in your CSS (e.g., sm, md, lg)
                 extraClassName="my-custom-class" // Optional extra class names if needed
