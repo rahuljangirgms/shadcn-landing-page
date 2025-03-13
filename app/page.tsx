@@ -4,7 +4,7 @@ import { ContactSection } from "@/components/layout/sections/contact";
 import { FAQSection } from "@/components/layout/sections/faq";
 import { FeaturesSection } from "@/components/layout/sections/features";
 import { FooterSection } from "@/components/layout/sections/footer";
-import { Hero4 } from "@/components/layout/sections/hero";
+import { Hero } from "@/components/layout/sections/hero";
 import { PricingSection } from "@/components/layout/sections/pricing";
 import { ServicesSection } from "@/components/layout/sections/services";
 import { SponsorsSection } from "@/components/layout/sections/sponsors";
@@ -41,18 +41,34 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <>
-      <Hero4 />
+    // <>
+    //   <Hero4 />
+    //   <SponsorsSection />
+    //   <BenefitsSection />
+    //   <FeaturesSection />
+    //   <ServicesSection />
+    //   <TestimonialSection />
+    //   <TeamSection />
+      
+    //   <PricingSection />
+    //   <ContactSection />
+    //   <FAQSection />
+    //    <CommunitySection />
+    //   <FooterSection />
+    // </>
+     <>
+      <Hero />
       <SponsorsSection />
       <BenefitsSection />
       <FeaturesSection />
       <ServicesSection />
       <TestimonialSection />
       <TeamSection />
-      <CommunitySection />
+      
       <PricingSection />
       <ContactSection />
       <FAQSection />
+       <CommunitySection />
       <FooterSection />
     </>
   );

@@ -1,140 +1,148 @@
+import { Check, Minus, MoveRight, PhoneCall } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Check } from "lucide-react";
 
-enum PopularPlan {
-  NO = 0,
-  YES = 1,
-}
-
-interface PlanProps {
-  title: string;
-  popular: PopularPlan;
-  price: number;
-  description: string;
-  buttonText: string;
-  benefitList: string[];
-}
-
-const plans: PlanProps[] = [
-  {
-    title: "Free",
-    popular: 0,
-    price: 0,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Start Free Trial",
-    benefitList: [
-      "1 team member",
-      "1 GB storage",
-      "Upto 2 pages",
-      "Community support",
-      "AI assistance",
-    ],
-  },
-  {
-    title: "Premium",
-    popular: 1,
-    price: 45,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Get starterd",
-    benefitList: [
-      "4 team member",
-      "8 GB storage",
-      "Upto 6 pages",
-      "Priority support",
-      "AI assistance",
-    ],
-  },
-  {
-    title: "Enterprise",
-    popular: 0,
-    price: 120,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Contact US",
-    benefitList: [
-      "10 team member",
-      "20 GB storage",
-      "Upto 10 pages",
-      "Phone & email support",
-      "AI assistance",
-    ],
-  },
-];
-
-export const PricingSection = () => {
-  return (
-    <section className="container py-24 sm:py-32">
-      <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-        Pricing
-      </h2>
-
-      <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-        Get unlimitted access
-      </h2>
-
-      <h3 className="md:w-1/2 mx-auto text-xl text-center text-muted-foreground pb-14">
-        Lorem ipsum dolor sit amet consectetur adipisicing reiciendis.
-      </h3>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4">
-        {plans.map(
-          ({ title, popular, price, description, buttonText, benefitList }) => (
-            <Card
-              key={title}
-              className={
-                popular === PopularPlan?.YES
-                  ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10 border-[1.5px] border-primary lg:scale-[1.1]"
-                  : ""
-              }
-            >
-              <CardHeader>
-                <CardTitle className="pb-2">{title}</CardTitle>
-
-                <CardDescription className="pb-4">
-                  {description}
-                </CardDescription>
-
-                <div>
-                  <span className="text-3xl font-bold">${price}</span>
-                  <span className="text-muted-foreground"> /month</span>
-                </div>
-              </CardHeader>
-
-              <CardContent className="flex">
-                <div className="space-y-4">
-                  {benefitList.map((benefit) => (
-                    <span key={benefit} className="flex">
-                      <Check className="text-primary mr-2" />
-                      <h3>{benefit}</h3>
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-
-              <CardFooter>
-                <Button
-                  variant={
-                    popular === PopularPlan?.YES ? "default" : "secondary"
-                  }
-                  className="w-full"
-                >
-                  {buttonText}
-                </Button>
-              </CardFooter>
-            </Card>
-          )
-        )}
+export const PricingSection = () => (
+  <div className="w-full section">
+    <div className="container mx-auto">
+      <div className="flex text-center justify-center items-center gap-4 flex-col">
+        <Badge>Pricing</Badge>
+        <div className="flex gap-2 flex-col">
+          <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl text-center font-regular">
+            Prices that make sense!
+          </h2>
+          <p className="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-xl text-center">
+            Managing a small business today is already tough.
+          </p>
+        </div>
+        <div className="grid text-left w-full grid-cols-3 lg:grid-cols-4 divide-x pt-20">
+          <div className="col-span-3 lg:col-span-1"></div>
+          <div className="px-3 py-1 md:px-6 md:py-4  gap-2 flex flex-col">
+            <p className="text-2xl">Startup</p>
+            <p className="text-sm text-muted-foreground">
+              Our goal is to streamline SMB trade, making it easier and faster
+              than ever for everyone and everywhere.
+            </p>
+            <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-8">
+              <span className="text-4xl">$40</span>
+              <span className="text-sm text-muted-foreground"> / month</span>
+            </p>
+            <Button variant="outline" className="gap-4 mt-8">
+              Try it <MoveRight className="w-4 h-4" />
+            </Button>
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col">
+            <p className="text-2xl">Growth</p>
+            <p className="text-sm text-muted-foreground">
+              Our goal is to streamline SMB trade, making it easier and faster
+              than ever for everyone and everywhere.
+            </p>
+            <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-8">
+              <span className="text-4xl">$40</span>
+              <span className="text-sm text-muted-foreground"> / month</span>
+            </p>
+            <Button className="gap-4 mt-8">
+              Try it <MoveRight className="w-4 h-4" />
+            </Button>
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col">
+            <p className="text-2xl">Enterprise</p>
+            <p className="text-sm text-muted-foreground">
+              Our goal is to streamline SMB trade, making it easier and faster
+              than ever for everyone and everywhere.
+            </p>
+            <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-8">
+              <span className="text-4xl">$40</span>
+              <span className="text-sm text-muted-foreground"> / month</span>
+            </p>
+            <Button variant="outline" className="gap-4 mt-8">
+              Contact us <PhoneCall className="w-4 h-4" />
+            </Button>
+          </div>
+          <div className="px-3 lg:px-6 col-span-3 lg:col-span-1  py-4">
+            <b>Features</b>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          {/* New Line */}
+          <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">SSO</div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Check className="w-4 h-4 text-primary" />
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Check className="w-4 h-4 text-primary" />
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Check className="w-4 h-4 text-primary" />
+          </div>
+          {/* New Line */}
+          <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            AI Assistant
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Minus className="w-4 h-4 text-muted-foreground" />
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Check className="w-4 h-4 text-primary" />
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Check className="w-4 h-4 text-primary" />
+          </div>
+          {/* New Line */}
+          <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            Version Control
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Minus className="w-4 h-4 text-muted-foreground" />
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Check className="w-4 h-4 text-primary" />
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Check className="w-4 h-4 text-primary" />
+          </div>
+          {/* New Line */}
+          <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            Members
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <p className="text-muted-foreground text-sm">5 members</p>
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <p className="text-muted-foreground text-sm">25 members</p>
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <p className="text-muted-foreground text-sm">100+ members</p>
+          </div>
+          {/* New Line */}
+          <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            Multiplayer Mode
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Minus className="w-4 h-4 text-muted-foreground" />
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Check className="w-4 h-4 text-primary" />
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Check className="w-4 h-4 text-primary" />
+          </div>
+          {/* New Line */}
+          <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            Orchestration
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Minus className="w-4 h-4 text-muted-foreground" />
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Check className="w-4 h-4 text-primary" />
+          </div>
+          <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <Check className="w-4 h-4 text-primary" />
+          </div>
+        </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </div>
+);

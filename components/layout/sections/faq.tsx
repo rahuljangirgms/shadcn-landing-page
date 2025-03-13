@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 export const FAQSection = () => (
-  <div className="w-full py-20 lg:py-40">
+  <div className="section w-full  ">
     <div className="container mx-auto">
       <div className="grid lg:grid-cols-2 gap-10">
         <div className="flex gap-10 flex-col">

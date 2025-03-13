@@ -1,0 +1,338 @@
+/* ------------------------- Buttons -------------------------------------------------- */
+
+.col-row-btn {
+    display: flex;
+    gap: 0.5em;
+    flex-direction: row;
+}
+
+.btn {
+    position: relative;
+    border: 0;
+    outline: 0;
+    /* Updated to use the root radius variable */
+    border-radius: var(--radius);
+ 
+}
+
+.btn input {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.btn .btn-click {
+    cursor: pointer;
+    background-color: transparent;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: calc(var(--btn-height) *2);
+    overflow: hidden;
+    /* Updated to use var(--radius) */
+    border-radius: var(--radius);
+    border: 1px solid rgb(136, 136, 136);
+     
+}
+
+.btn .btn-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.2em;
+    height: 100%;
+    transform: translateX(0) rotate(0.001deg);
+    gap: 0.5em;
+    /* Updated to use var(--radius) */
+    border-radius: var(--radius);
+}
+
+.btn .btn-content.duplicate {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.btn .btn-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* Updated to use var(--radius) */
+    border-radius: var(--radius);
+    /* Using hsl() to reference your primary variable */
+    background-color: hsl(var(--primary));
+    transition: background-color var(--animation-theme);
+}
+
+.btn .btn-content.original .btn-fill {
+    background-color: hsl(var(--background));
+}
+
+.btn .btn-content span {
+    font-size: 0.85em;
+    /* Using hsl() to reference your foreground variable */
+    color: hsl(var(--foreground));
+    display: block;
+    position: relative;
+    font-weight: 500;
+    transition: color var(--animation-theme);
+}
+
+.btn .btn-content svg {
+    width: 0.85em;
+    position: relative;
+}
+
+.btn.external .btn-content svg {
+    transform: rotate(-45deg);
+}
+
+.btn .btn-content svg :is(polyline, line) {
+    stroke: hsl(var(--foreground));
+    transition: stroke var(--animation-theme);
+    stroke-width: 2px;
+}
+
+.btn .border-box {
+    /* Updated to use var(--radius) */
+    border-radius: var(--radius);
+    transition: opacity 0.1s ease-in-out 0.1s, border-color var(--animation-theme);
+    z-index: 3;
+}
+
+/* Hover */
+
+@media (hover: hover) {
+    @media screen and (min-width: 1025px) {
+
+        .btn .btn-click.hover .btn-content.duplicate,
+        .btn .btn-click.active .btn-content.duplicate {
+            transform: translateX(101%) rotate(0.001deg);
+            transition: transform 0.5s cubic-bezier(1, 0, 0.25, 1);
+        }
+
+        .btn .btn-click.transitioning .btn-content.duplicate {
+            transform: translateX(0%) rotate(0.001deg);
+            transition: transform 0s;
+        }
+
+        .btn .btn-click .btn-content.original {
+            transform: translateX(101%) rotate(0.001deg);
+        }
+
+        .btn .btn-click.hover .btn-content.original,
+        .btn .btn-click.active .btn-content.original {
+            transform: translateX(0%) rotate(0.001deg);
+            transition: transform 0s;
+        }
+
+        .btn .btn-click.transitioning .btn-content.original {
+            transform: translateX(101%) rotate(0.001deg);
+            transition: transform 0.5s cubic-bezier(0.5, 0, 0.25, 1);
+            z-index: 2;
+        }
+
+        .btn .btn-click.hover .border-box,
+        .btn .btn-click.active .border-box {
+            opacity: 0;
+            transition: opacity 0.1s ease-in-out 0.25s, border-color var(--animation-theme);
+        }
+    }
+}
+
+/* Tag */
+
+.btn.tag .btn-click {
+    height: calc(var(--btn-height) * 0.75);
+}
+
+.btn.tag .btn-content {
+    padding: 0 0.85em;
+}
+
+.btn.tag .btn-content span {
+    font-size: 0.75em;
+}
+
+/* XL */
+
+.btn.xl .btn-click {
+    height: calc(var(--btn-height) * 1.25);
+}
+
+.btn.xl,
+.btn.xl .btn-click,
+.btn.xl .border-box,
+.btn.xl .btn-fill,
+.btn.xl .btn-content {
+    /* Updated to use var(--radius) with a multiplier */
+    border-radius: calc(var(--radius) * 1.5);
+}
+
+.btn.xl .btn-content {
+    padding: 0 1.5em;
+}
+
+.btn.xl .btn-content span {
+    font-size: 0.95em;
+}
+
+.btn.xl .btn-content svg {
+    width: 0.95em;
+}
+
+/* Circle */
+
+.btn.circle::before {
+    content: "";
+    border: 1px solid hsl(var(--border));
+    width: 120%;
+    height: 120%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.btn.circle .btn-click {
+    height: calc(var(--btn-height) * 3);
+    width: calc(var(--btn-height) * 3);
+}
+
+.btn.circle .btn,
+.btn.circle .btn-click,
+.btn.circle .border-box,
+.btn.circle .btn-fill,
+.btn.circle .btn-content {
+    border-radius: 50%;
+}
+
+.btn.circle .btn-content {
+    padding: 0 1.5em;
+    width: 100%;
+}
+
+.btn.circle .btn-content span {
+    font-size: 0.95em;
+    text-align: center;
+    line-height: 1.1;
+}
+
+/* Primary */
+
+.btn.primary .border-box {
+    display: none;
+}
+
+[data-theme-nav="light"] .btn.primary .btn-content.original .btn-fill {
+    background-color: hsl(var(--foreground));
+}
+
+[data-theme-nav="light"] .btn.primary .btn-content.original span {
+    color: hsl(var(--background));
+}
+
+[data-theme-nav="light"] .btn.primary .btn-content.original svg :is(polyline, line) {
+    stroke: hsl(var(--background));
+}
+
+/* Additional nav background themes remain unchanged */
+[data-bg-nav="lightgray"] .main-nav-bar .nav-fill {
+    background-color: var(--color-lightgray);
+}
+
+[data-bg-nav="beige"] .main-nav-bar .nav-fill {
+    background-color: var(--color-beige);
+}
+
+/* Dark */
+
+.btn.dark .border-box {
+    display: none;
+}
+
+.btn.dark .btn-content.duplicate .btn-fill {
+    background-color: hsl(var(--foreground));
+}
+
+.btn.dark .btn-content.duplicate span {
+    color: hsl(var(--background));
+}
+
+.btn.dark .btn-content.duplicate svg :is(polyline, line) {
+    stroke: hsl(var(--background));
+}
+
+/* Light */
+
+.btn.light .border-box {
+    display: none;
+}
+
+.btn.light .btn-content.duplicate .btn-fill {
+    background-color: hsl(var(--background));
+}
+
+.btn.light .btn-content.original .btn-fill {
+    background-color: hsl(var(--primary));
+}
+
+/* Outline */
+
+.btn.outline .btn-content.original .btn-fill {
+    background-color: hsl(var(--primary));
+}
+
+.btn.outline .btn-content.duplicate .btn-fill {
+    background-color: hsl(var(--background));
+}
+
+[data-bg-nav="lightgray"] .main-nav-bar .btn.outline .btn-content.duplicate .btn-fill {
+    background-color: var(--color-lightgray);
+}
+
+[data-bg-nav="beige"] .main-nav-bar .btn.outline .btn-content.duplicate .btn-fill {
+    background-color: var(--color-beige);
+}
+
+[data-theme-nav="dark"] .main-nav-bar .btn.outline .btn-content.duplicate span,
+[data-theme-section="dark"] .btn.outline .btn-content.duplicate span {
+    color: hsl(var(--background));
+}
+
+[data-theme-nav="dark"] .main-nav-bar .btn.outline .btn-content.duplicate .btn-fill,
+[data-theme-section="dark"] .btn.outline .btn-content.duplicate .btn-fill {
+    background-color: hsl(var(--foreground));
+}
+
+[data-theme-nav="dark"] .main-nav-bar .btn.outline .border-box,
+[data-theme-section="dark"] .btn.outline .border-box {
+    border-color: var(--color-border-light);
+}
+
+[data-theme-nav="dark"] .main-nav-bar .btn.outline .btn-content.duplicate svg :is(polyline, line),
+[data-theme-section="dark"] .btn.outline .btn-content.duplicate svg :is(polyline, line) {
+    stroke: var(--color-light);
+}
+
+/* Outline - Inactive */
+
+.btn.outline.inactive {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.btn.outline.inactive .btn-content span {
+    opacity: 0.66;
+}

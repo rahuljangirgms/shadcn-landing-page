@@ -42,7 +42,7 @@ const serviceList: ServiceProps[] = [
 
 export const ServicesSection = () => {
   return (
-    <section id="services" className="container py-24 sm:py-32">
+    <section id="services" className="container section">
       <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
         Services
       </h2>

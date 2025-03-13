@@ -4,6 +4,7 @@ import { Icon } from "@/components/ui/icon";
 import { Marquee } from "@devnomic/marquee";
 import "@devnomic/marquee/dist/index.css";
 import { icons } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 interface sponsorsProps {
   icon: string;
   name: string;
@@ -42,11 +43,20 @@ const sponsors: sponsorsProps[] = [
 
 export const SponsorsSection = () => {
   return (
-    <section id="sponsors" className="max-w-[75%] mx-auto pb-24 sm:pb-32">
-      <h2 className="text-lg md:text-xl text-center mb-6">
-        Our Platinum Sponsors
-      </h2>
+    <section id="sponsors" className="max-w-[75%] mx-auto section">
+      <div className="flex text-center justify-center items-center gap-4 flex-col">
 
+          <div className="mb-8">
+          <Badge>Our Platinum Sponsors</Badge>
+        </div>
+        <div className="flex gap-2 flex-col">
+         
+          <p className="text-lg max-w-xl lg:max-w-xl leading-relaxed tracking-tight text-muted-foreground">
+            Managing a small business today is already tough.
+          </p>
+        </div>
+      </div>
+      
       <div className="mx-auto">
         <Marquee
           className="gap-[3rem]"
