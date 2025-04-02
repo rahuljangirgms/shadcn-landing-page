@@ -11,6 +11,9 @@ import { SponsorsSection } from "@/components/layout/sections/sponsors";
 import { TeamSection } from "@/components/layout/sections/team";
 import { TestimonialSection } from "@/components/layout/sections/testimonial";
 
+import { HomeHero } from "@/components/layout/sections/home";
+
+import DynamicSlider from "@/components/layout/Animation/common/DynamicTextSlider";
 
 
 export const metadata = {
@@ -60,6 +63,23 @@ export default function Home() {
     // </>
      <>
       <Hero />
+
+      <div>
+        <DynamicSlider
+          text="Rahul Jangir - Rahul Jangir -"
+          speed={0.1}
+          scrollScrub={0.5}
+          framerMotionVariants={{
+            initial: { y: 0 },
+            enter: {
+              y: 0,
+              transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: 2.0 },
+            },
+          }}
+          pauseOnHover={true}
+          className="my-custom-slider" // Optional additional class
+        />
+      </div>
       <SponsorsSection />
       <BenefitsSection />
       <FeaturesSection />
